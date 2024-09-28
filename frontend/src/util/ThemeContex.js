@@ -20,7 +20,7 @@ const lightTheme = createTheme({
       secondary: "#666666", // Mid-Grey for less important text
     },
     action: {
-      active: "#ff9800", // Orange (common accent color)
+      active: "#add8e6", // light blue (common accent color)
     },
   },
 });

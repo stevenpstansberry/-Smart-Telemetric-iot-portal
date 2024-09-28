@@ -24,16 +24,18 @@ function App() {
         <Navbar />
 
         {/* Sidebar */}
-        <Sidebar open={isSidebarOpen} />
+        <Sidebar />
 
         {/* Main content */}
         <Box
           component="main"
           sx={{
             flexGrow: 1,
-            p: 3,
-            marginLeft: isSidebarOpen ? drawerWidth : collapsedWidth,
-            transition: "margin-left 0.3s", // Smooth transition for content when sidebar collapses
+            p: 3, // Add some padding
+            marginLeft: drawerWidth, // Ensure the content doesn't overlap with the sidebar
+            display: "flex",
+            justifyContent: "center", // Center the content horizontally
+            alignItems: "flex-start", // Align the content to the top
           }}
         >
           <Toolbar />

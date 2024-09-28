@@ -38,9 +38,11 @@ const Navbar = () => {
 
           {/* Toggle Theme Icon */}
           <IconButton
-            color="white"
+            color="inherit"
             onClick={toggleTheme}
-            sx={{ marginLeft: "auto" }}
+            sx={{
+              color: isDarkMode ? "white" : "white", // Set color based on theme
+            }}
           >
             <Brightness4Icon />
           </IconButton>
