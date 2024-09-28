@@ -4,13 +4,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
-import { styled, alpha, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { useThemeContext } from "../util/ThemeContex";
 
 const Navbar = () => {
   const { toggleTheme, isDarkMode } = useThemeContext();
-  const theme = useTheme();
 
   return (
     <AppBar
