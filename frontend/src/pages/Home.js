@@ -11,11 +11,12 @@ const Home = () => {
 
   return (
     <Grid container spacing={2}>
+      <Typography>meow</Typography>
+
       {devices.map((device) => (
         <Grid item xs={12} sm={6} md={4} key={device.id}>
           <Card>
             <CardContent>
-              <Typography>meow</Typography>
               <Typography variant="h6">{device.name}</Typography>
               <Typography variant="body2">Status: {device.status}</Typography>
               {/* Additional device info */}
