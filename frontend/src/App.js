@@ -11,25 +11,30 @@ import DeviceManagement from "./pages/DeviceManagement";
 import { Box, Toolbar } from "@mui/material";
 
 const drawerWidth = 240;
+const collapsedWidth = 60;
 
 function App() {
+  const [isSidebarOpen, setSidebarOpen] = React.useState(true); // Manages sidebar state
+
   return (
     <Router>
       {/* Navbar */}
       <Navbar />
 
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar open={isSidebarOpen} />
 
       {/* Main content */}
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, marginLeft: `${drawerWidth}px` }}
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          marginLeft: isSidebarOpen ? drawerWidth : collapsedWidth,
+          transition: "margin-left 0.3s", // Smooth transition for content when sidebar collapses
+        }}
       >
-        {/* Toolbar to provide spacing for the Navbar */}
         <Toolbar />
-
-        {/* Routes */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lighting-control" element={<LightingControl />} />

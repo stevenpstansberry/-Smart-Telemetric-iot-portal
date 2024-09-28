@@ -25,28 +25,26 @@ const Sidebar = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      {/* Sidebar Drawer */}
-      <Drawer
-        variant="permanent"
-        anchor="left"
-        open={open}
-        sx={{
+    <Drawer
+      variant="permanent"
+      anchor="left"
+      open={open}
+      sx={{
+        width: open ? drawerWidth : collapsedWidth,
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
           width: open ? drawerWidth : collapsedWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: open ? drawerWidth : collapsedWidth,
-            transition: "width 0.3s", // Smooth transition for collapsing and expanding
-            overflowX: "hidden",
-          },
-        }}
-      >
-        <Toolbar>
-          {/* Collapse/Expand Button */}
-          <IconButton onClick={toggleDrawer}>
-            {open ? <ChevronLeftIcon /> : <MenuIcon />}
-          </IconButton>
-        </Toolbar>
+          transition: "width 0.3s", // Smooth transition for collapsing and expanding
+          overflowX: "hidden",
+          display: "flex",
+          flexDirection: "column", // Flexbox to manage content alignment
+          justifyContent: "space-between", // Space out elements
+        },
+      }}
+    >
+      {/* Upper content with icons */}
+      <Box>
+        <Toolbar /> {/* Space below Navbar */}
         <Divider />
         <List>
           <ListItem button component={Link} to="/">
@@ -74,8 +72,20 @@ const Sidebar = () => {
             {open && <ListItemText primary="Device Management" />}
           </ListItem>
         </List>
-      </Drawer>
-    </Box>
+      </Box>
+
+      {/* Collapse/Expand Button at the bottom */}
+      <IconButton
+        onClick={toggleDrawer}
+        sx={{
+          justifyContent: "flex-start",
+          marginBottom: 2,
+          marginLeft: open ? 0 : "auto",
+        }}
+      >
+        {open ? <ChevronLeftIcon /> : <MenuIcon />}
+      </IconButton>
+    </Drawer>
   );
 };
 
