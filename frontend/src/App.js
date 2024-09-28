@@ -9,42 +9,40 @@ import MusicControl from "./pages/MusicControl";
 import AutomationRules from "./pages/AutomationRules";
 import DeviceManagement from "./pages/DeviceManagement";
 import { Box, Toolbar } from "@mui/material";
+import { ThemeContextProvider } from "./util/ThemeContex";
 
-const drawerWidth = 240;
-const collapsedWidth = 60;
+const drawerWidth = 60;
 
 function App() {
-  const [isSidebarOpen, setSidebarOpen] = React.useState(true); // Manages sidebar state
-
   return (
-    <Router>
-      {/* Navbar */}
-      <Navbar />
+    <ThemeContextProvider>
+      <Router>
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Sidebar */}
-      <Sidebar open={isSidebarOpen} />
+        {/* Sidebar */}
+        <Sidebar />
 
-      {/* Main content */}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          marginLeft: isSidebarOpen ? drawerWidth : collapsedWidth,
-          transition: "margin-left 0.3s", // Smooth transition for content when sidebar collapses
-        }}
-      >
-        <Toolbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/lighting-control" element={<LightingControl />} />
-          <Route path="/aquarium-monitoring" element={<AquariumMonitoring />} />
-          <Route path="/music-control" element={<MusicControl />} />
-          <Route path="/automation-rules" element={<AutomationRules />} />
-          <Route path="/device-management" element={<DeviceManagement />} />
-        </Routes>
-      </Box>
-    </Router>
+        {/* Main content */}
+        <Box
+          component="main"
+          sx={{ flexGrow: 1, p: 3, marginLeft: `${drawerWidth}px` }}
+        >
+          <Toolbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/lighting-control" element={<LightingControl />} />
+            <Route
+              path="/aquarium-monitoring"
+              element={<AquariumMonitoring />}
+            />
+            <Route path="/music-control" element={<MusicControl />} />
+            <Route path="/automation-rules" element={<AutomationRules />} />
+            <Route path="/device-management" element={<DeviceManagement />} />
+          </Routes>
+        </Box>
+      </Router>
+    </ThemeContextProvider>
   );
 }
 
