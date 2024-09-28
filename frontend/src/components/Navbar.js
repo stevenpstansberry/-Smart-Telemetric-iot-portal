@@ -3,17 +3,22 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Brightness4Icon from "@mui/icons-material/Brightness4"; // Dark mode icon
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import { styled, alpha, useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
 import { useThemeContext } from "../util/ThemeContex";
 
 const Navbar = () => {
   const { toggleTheme, isDarkMode } = useThemeContext();
+  const theme = useTheme();
 
   return (
     <AppBar
       position="fixed"
-      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        color: (theme) => theme.palette.text.primary,
+      }}
     >
       <Toolbar
         sx={{
@@ -27,13 +32,13 @@ const Navbar = () => {
         {/* Left aligned box with the title and icon */}
         <Box sx={{ display: "flex", alignItems: "center" }}>
           {/* Title */}
-          <Typography variant="h6" sx={{ marginRight: 2 }}>
+          <Typography variant="h6" color="white" sx={{ marginRight: 2 }}>
             Smart Room Portal
           </Typography>
 
           {/* Toggle Theme Icon */}
           <IconButton
-            color="inherit"
+            color="white"
             onClick={toggleTheme}
             sx={{ marginLeft: "auto" }}
           >
