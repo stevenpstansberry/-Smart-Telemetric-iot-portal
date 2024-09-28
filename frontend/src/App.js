@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import LightingControl from "./pages/LightingControl";
+import AquariumMonitoring from "./pages/AquariumMonitoring";
+import MusicControl from "./pages/MusicControl";
+import AutomationRules from "./pages/AutomationRules";
+import DeviceManagement from "./pages/DeviceManagement";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Sidebar />
+      <div style={{ marginLeft: 240, padding: 16 }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/lighting-control" element={<LightingControl />} />
+          <Route path="/aquarium-monitoring" element={<AquariumMonitoring />} />
+          <Route path="/music-control" element={<MusicControl />} />
+          <Route path="/automation-rules" element={<AutomationRules />} />
+          <Route path="/device-management" element={<DeviceManagement />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
