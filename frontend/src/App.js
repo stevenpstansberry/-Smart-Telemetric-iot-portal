@@ -11,12 +11,9 @@ import DeviceManagement from "./pages/DeviceManagement";
 import { Box, Toolbar } from "@mui/material";
 import { ThemeContextProvider } from "./util/ThemeContex";
 
-const drawerWidth = 240;
-const collapsedWidth = 60;
+const drawerWidth = 60;
 
 function App() {
-  const [isSidebarOpen, setSidebarOpen] = React.useState(true); // Manages sidebar state
-
   return (
     <ThemeContextProvider>
       <Router>
@@ -29,14 +26,7 @@ function App() {
         {/* Main content */}
         <Box
           component="main"
-          sx={{
-            flexGrow: 1,
-            p: 3, // Add some padding
-            marginLeft: drawerWidth, // Ensure the content doesn't overlap with the sidebar
-            display: "flex",
-            justifyContent: "center", // Center the content horizontally
-            alignItems: "flex-start", // Align the content to the top
-          }}
+          sx={{ flexGrow: 1, p: 3, marginLeft: `${drawerWidth}px` }}
         >
           <Toolbar />
           <Routes>
