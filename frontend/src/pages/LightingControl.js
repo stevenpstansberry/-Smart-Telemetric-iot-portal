@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SketchPicker } from "react-color";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Grid, IconButton, Paper } from "@mui/material";
+import { Box, Button, Grid, IconButton, Paper, Tooltip } from "@mui/material";
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
