@@ -57,13 +57,15 @@ const LightingControl = () => {
         <Typography variant="h6" gutterBottom>
           Choose Color
         </Typography>
-        {/* Replace ChromePicker with SketchPicker and disable alpha */}
-        <SketchPicker
-          color={color}
-          onChangeComplete={handleColorChange}
-          disableAlpha={true} // Disable alpha slider
-          presetColors={[]} // Remove preset colors
-        />
+        <Box display="flex" justifyContent="center">
+          {/* Replace ChromePicker with SketchPicker and disable alpha */}
+          <SketchPicker
+            color={color}
+            onChangeComplete={handleColorChange}
+            disableAlpha={true} // Disable alpha slider
+            presetColors={[]} // Remove preset colors
+          />
+        </Box>
         <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
           {colorPresets.map((preset, index) => (
             <Button
