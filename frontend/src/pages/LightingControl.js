@@ -1,19 +1,26 @@
 import React, { useState } from "react";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import Slider from "@mui/material/Slider";
-import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 import { Box, Button, Grid, IconButton, Paper } from "@mui/material";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const LightingControl = () => {
-  const [color, setColor] = useState("#ffffff");
+  const [color, setColor] = useState({
+    r: 255,
+    g: 255,
+    b: 255,
+  });
   const [brightness, setBrightness] = useState(100);
   const [isOn, setIsOn] = useState(true);
 
-  const handleColorChange = (newColor) => setColor(newColor.hex);
+  // Only handle RGB values
+  const handleColorChange = (newColor) => {
+    const { r, g, b } = newColor.rgb;
+    setColor({ r, g, b });
+  };
+
   const handleBrightnessChange = (event, newValue) => setBrightness(newValue);
   const handlePowerToggle = () => setIsOn(!isOn);
 
@@ -50,12 +57,23 @@ const LightingControl = () => {
         <Typography variant="h6" gutterBottom>
           Choose Color
         </Typography>
-        <ChromePicker color={color} onChangeComplete={handleColorChange} />
+        {/* Replace ChromePicker with SketchPicker and disable alpha */}
+        <SketchPicker
+          color={color}
+          onChangeComplete={handleColorChange}
+          disableAlpha={true} // Disable alpha slider
+        />
         <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
           {colorPresets.map((preset, index) => (
             <Button
               key={index}
-              onClick={() => setColor(preset)}
+              onClick={() =>
+                setColor({
+                  r: parseInt(preset.slice(1, 3), 16),
+                  g: parseInt(preset.slice(3, 5), 16),
+                  b: parseInt(preset.slice(5, 7), 16),
+                })
+              }
               sx={{
                 backgroundColor: preset,
                 width: 36,
@@ -94,7 +112,7 @@ const LightingControl = () => {
       {/* Color Preview */}
       <Box
         sx={{
-          backgroundColor: color,
+          backgroundColor: `rgb(${color.r}, ${color.g}, ${color.b})`,
           height: 50,
           borderRadius: 2,
           border: "1px solid #ccc",
