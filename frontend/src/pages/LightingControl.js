@@ -62,6 +62,7 @@ const LightingControl = () => {
           color={color}
           onChangeComplete={handleColorChange}
           disableAlpha={true} // Disable alpha slider
+          presetColors={[]} // Remove preset colors
         />
         <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
           {colorPresets.map((preset, index) => (
